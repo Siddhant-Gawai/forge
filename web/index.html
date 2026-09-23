@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1321"><title>Forge · Build together</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/auth.css"><link rel="stylesheet" href="/forms.css"><link rel="stylesheet" href="/reviews.css"><link rel="stylesheet" href="/theme.css"><script src="/app.js" defer></script><script src="/reviews.js" defer></script><script src="/selects.js" defer></script></head>
+<body>
+<div id="login" class="login" hidden>
+ <div class="login-card">
+  <a class="brand" href="/login"><span class="brand-mark">F</span> forge<span class="brand-dot">.</span></a>
+  <div class="auth-tabs" aria-label="Account options"><a href="/login" data-auth="login">Log in</a><a href="/signup" data-auth="signup">Sign up</a></div>
+  <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+  <h1 id="auth-title">Welcome back.</h1><p id="auth-description">A shared place for your next great idea.<br>Log in to pick up where you left off.</p>
+  <form id="login-form">
+   <label id="name-label" hidden>Full name<input name="name" autocomplete="name" maxlength="100" disabled></label>
+   <label>Email address<input name="email" type="email" autocomplete="username" placeholder="you@company.com" required maxlength="254"></label>
+   <label>Password<input name="password" type="password" autocomplete="current-password" required maxlength="72"><small id="password-hint" hidden>Use at least 12 characters.</small></label>
+   <div id="auth-error" role="alert"></div>
+   <button class="primary" type="submit" id="auth-submit">Log in →</button>
+  </form>
+  <p class="auth-switch" id="auth-switch"></p>
+  <div id="demo-label" hidden><label>Explore the local demo<select id="demo-user"><option value="alex">Alex Morgan · Owner</option><option value="sam">Sam Rivera · Maintainer</option><option value="jordan">Jordan Lee · Developer</option></select></label><button id="demo-login" class="button">Enter demo workspace</button></div>
+  <small id="login-note">Your workspace. Your team. One place to build.</small>
+ </div>
+ <div class="login-art"><span>PLAN. COLLABORATE. SHIP.</span><div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div><div class="auth-art-copy"><span class="auth-art-badge">◈ &nbsp; BUILT FOR BUILDERS</span><b>Good ideas deserve<br>great company.</b><p>From the first issue to the next release.<br>Bring your people and your projects together.</p></div><div class="auth-art-footer">One workspace. Every possibility.</div></div>
+</div>
+<div id="app" hidden>
+ <aside class="sidebar"><a class="brand" href="/"><span class="brand-mark">F</span> forge<span class="brand-dot">.</span></a><div class="workspace-label">WORKSPACE</div><select id="org-select" aria-label="Organization"></select><div class="project-box"><div class="project-avatar">◈</div><div><small>PROJECT</small><select id="project-select" aria-label="Project"></select></div></div><nav id="nav"></nav><div class="sidebar-bottom"><div class="live"><i id="live-dot"></i><span id="live-label">Connecting…</span></div><button data-action="organization" class="sidebar-button">＋ New organization</button><button data-action="logout" id="profile" class="profile"></button></div></aside>
+ <div class="workspace"><header class="topbar"><div id="breadcrumb"></div><div class="top-actions"><span class="demo-badge" id="demo-badge" hidden>LOCAL DEMO</span><button class="icon-button" data-action="inbox" aria-label="Notifications">♧ <span id="notification-count"></span></button><span class="avatar small" id="top-avatar"></span></div></header><main id="content"></main><footer>Built for the work ahead.<span>Forge / MVP <span class="footer-dot">●</span> Go powered</span></footer></div>
+</div>
+<dialog id="modal"><form id="modal-form"><div class="modal-head"><h2 id="modal-title"></h2><button type="button" class="icon-button" data-action="close-modal" aria-label="Close dialog">×</button></div><div id="modal-body"></div><div id="form-error" role="alert"></div><div class="modal-footer"><button type="button" class="button" data-action="close-modal">Cancel</button><button type="submit" class="primary" id="modal-submit">Create</button></div></form></dialog><div id="toast" role="status" hidden></div>
+</body></html>

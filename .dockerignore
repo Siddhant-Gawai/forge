@@ -1,0 +1,8 @@
+data
+.git
+*.exe
+coverage.out
+.env
+.env.*
+*.pem
+**/node_modules
