@@ -41,8 +41,8 @@ PostgreSQL sessions store only a SHA-256 token digest, survive restart, and are 
 | Teams & projects | Create/edit teams, assign members, create projects, assign a team, archive/unarchive projects |
 | Roles | Guest reads; developer manages work; maintainer manages project settings/access and merges; owner manages organization membership |
 | Repository import | GitHub and GitLab.com authorization-code OAuth with state validation and PKCE; paginated repository selection; server-verified metadata import |
-| Issues | Create/edit/close/reopen, assign users, apply labels, attach milestones, search/filter |
-| Milestones | Due dates, completion progress, close/reopen |
+| Issues | Create/edit/close/reopen; search titles, descriptions, and IDs; combine status, assignee, label, and milestone filters; sort by date or title; keep filters per project during the session |
+| Milestones | Due dates, completion progress, close/reopen, open the milestone's issue list |
 | Merge requests | Link existing GitHub/GitLab requests, load diffs, comment on old/new lines, approve or request changes, execute provider merges |
 | Merge gates | Current commit, distinct non-author provider identities, reviewer access, required approvals, resolved discussions, real provider CI and mergeability |
 | Webhooks | GitHub HMAC-SHA256 validation; GitLab secret token validation; persistent per-project delivery deduplication |
