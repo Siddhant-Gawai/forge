@@ -62,7 +62,7 @@ function pipelines(){
  const runs=[...list('pipelines')].reverse(), states=['all','queued','running','passed','failed'];
  const visible=runs.filter(p=>pipelineFilter==='all'||p.state===pipelineFilter);
  return heading('CI / Pipelines','A clear view from queued to complete.',button('▷ Run pipeline','pipeline','primary'))+`<div class="note"><strong>Simulation mode</strong> · Runs advance through queued → running → passed / failed. No code or shell commands are executed.</div>`+
- `<div class="toolbar" role="group" aria-label="Pipeline status filters">${states.map(state=>`<button class="tab ${pipelineFilter===state?'active':''}" data-action="pipeline-filter" data-id="${state}" aria-pressed="${pipelineFilter===state}">${state[0].toUpperCase()+state.slice(1)} (${state==='all'?runs.length:runs.filter(p=>p.state===state).length})</button>`).join('')}</div><div class="card">${visible.map(p=>pipelineRow(p)+(selected===p.id?`<div class="detail-actions">${button('Copy logs','copy-pipeline-logs','button',p.id)}</div><pre class="log">${esc(p.logs.join('\n'))}</pre>`:'')).join('')||empty(runs.length?'No pipelines match this status. Choose All to see every run.':'No pipelines yet. Start your first simulation.')}</div>`;
+ `<div class="toolbar" role="group" aria-label="Pipeline status filters">${states.map(state=>`<button class="tab ${pipelineFilter===state?'active':''}" data-action="pipeline-filter" data-id="${state}" aria-pressed="${pipelineFilter===state}">${state[0].toUpperCase()+state.slice(1)} (${state==='all'?runs.length:runs.filter(p=>p.state===state).length})</button>`).join('')}</div><div class="card">${visible.map(p=>pipelineRow(p)+(selected===p.id?`<div class="detail-actions">${button('Copy logs','copy-pipeline-logs','button',p.id)}${button('Download logs','download-pipeline-logs','button',p.id)}</div><pre class="log">${esc(p.logs.join('\n'))}</pre>`:'')).join('')||empty(runs.length?'No pipelines match this status. Choose All to see every run.':'No pipelines yet. Start your first simulation.')}</div>`;
 }
 function milestones(){return heading('Milestones','Give the next chapter a finish line.',button('＋ New milestone','milestone','primary'))+(list('milestones').map(m=>{const issues=list('issues').filter(i=>i.milestone_id===m.id),done=issues.filter(i=>i.state==='closed').length;return card(esc(m.title),`<div class="repo-details"><p><span>Due ${esc(m.due_date||'anytime')}</span>${badge(m.state)}</p><progress class="progress" value="${done}" max="${issues.length||1}" aria-label="Milestone progress"></progress><p><span>${done} of ${issues.length} issues completed</span>${button('View issues','milestone-issues','button',m.id)}${button(m.state==='open'?'Close milestone':'Reopen milestone','milestone-state','button',m.id)}</p></div>`) }).join('')||empty('No milestones yet. Create one to plan your next release.'))}
 function activity(){return heading('Activity','The story of your project, one update at a time.')+`<div class="note">Append-only activity. Events are hash-linked and verified when the server starts.</div>`+`<div class="card">${feed(list('activity'))}</div>`}
@@ -119,6 +119,16 @@ case 'copy-pipeline-logs':{
  if(!run.logs?.length){toast('No logs to copy yet.');return}
  if(!navigator.clipboard?.writeText){toast('Clipboard is unavailable. Select the log text to copy it.');return}
  try{await navigator.clipboard.writeText(run.logs.join('\n'));toast('Pipeline logs copied.')}catch{toast('Clipboard access was denied. Select the log text to copy it.')}
+ return;
+}
+case 'download-pipeline-logs':{
+ const run=list('pipelines').find(p=>p.id===id);
+ if(!run)throw Error('This pipeline is no longer available.');
+ if(!run.logs?.length){toast('No logs to download yet.');return}
+ const url=URL.createObjectURL(new Blob([run.logs.join('\n')+'\n'],{type:'text/plain;charset=utf-8'}));
+ const link=document.createElement('a');
+ link.href=url;link.download=`forge-pipeline-${String(run.id).replace(/[^a-zA-Z0-9_-]/g,'_')}.log`;
+ try{document.body.appendChild(link);link.click();toast('Log download started.')}finally{link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
  return;
 }
 case 'back':selected='';render();return;
