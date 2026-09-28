@@ -47,8 +47,8 @@ PostgreSQL sessions store only a SHA-256 token digest, survive restart, and are 
 | Merge gates | Current commit, distinct non-author provider identities, reviewer access, required approvals, resolved discussions, real provider CI and mergeability |
 | Webhooks | GitHub HMAC-SHA256 validation; GitLab secret token validation; persistent per-project delivery deduplication |
 | Activity | Append-only API behavior, actor/action/time details, SHA-256 hash chain verified on startup |
-| CI | Persistent queued → running → passed/failed simulations, incremental logs, restart recovery |
-| Notifications | Assignments, reviews, approvals, merges, and pipeline outcomes; per-user read state |
+| CI | Persistent queued → running → passed/failed simulations, incremental logs, restart recovery; status filters with live counts; copy or download pipeline logs |
+| Notifications | Assignments, reviews, approvals, merges, and pipeline outcomes; per-user read state; All/Unread filters with counts; mark individual notifications or all notifications read |
 | Live updates | Authenticated server-sent events, heartbeat, automatic reconnect, state refresh |
 | Audit | Separate hash-linked log for membership, settings, imports, approvals, merges, and secret rotation |
 
@@ -62,6 +62,13 @@ Organization roles are inherited by all projects. A project role can raise acces
 4. Approve and resolve the discussion. Run a failed pipeline; the latest failed run blocks merging.
 5. Run a passed pipeline for the same merge request. Watch its logs and notifications update live.
 6. Merge. Inspect Activity and Audit log. Restart the app and verify that the records remain.
+
+## Finding work and reviewing runs
+
+- **Issues:** Search by title, description, or ID. Combine status, assignee (including Assigned to me and Unassigned), label, and milestone filters. Sort newest first, oldest first, or by title. Filter selections stay separate for each project while the page remains open. **Clear filters** restores all statuses and clears search and other filters.
+- **Milestones:** Select **View issues** to see both open and closed issues for that milestone.
+- **Notifications:** Switch between **All** and **Unread**, with counts that update as notifications arrive or are marked read. **Mark all read** appears while unread notifications remain.
+- **CI / Pipelines:** Filter runs by All, Queued, Running, Passed, or Failed. Each filter shows its current count and updates with live events. Open a run to inspect its logs, then use **Copy logs** or **Download logs** to save the current output as a plain-text `.log` file. Copying requires browser clipboard access; when unavailable, select and copy the log text manually. Empty logs show a message instead of copying or downloading an empty file. Logs copied or downloaded during a running simulation contain only the output available at that moment.
 
 ## Configuration
 
