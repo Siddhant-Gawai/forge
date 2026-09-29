@@ -42,7 +42,7 @@ PostgreSQL sessions store only a SHA-256 token digest, survive restart, and are 
 | Roles | Guest reads; developer manages work; maintainer manages project settings/access and merges; owner manages organization membership |
 | Repository import | GitHub and GitLab.com authorization-code OAuth with state validation and PKCE; paginated repository selection; server-verified metadata import |
 | Issues | Create/edit/close/reopen; search titles, descriptions, and IDs; combine status, assignee, label, and milestone filters; sort by date or title; keep filters per project during the session |
-| Milestones | Due dates, completion progress, close/reopen, open the milestone's issue list |
+| Milestones | Due dates, completion progress, close/reopen, All/Open/Closed filters with live counts, open the milestone's issue list |
 | Merge requests | Link existing GitHub/GitLab requests, load diffs, comment on old/new lines, approve or request changes, execute provider merges |
 | Merge gates | Current commit, distinct non-author provider identities, reviewer access, required approvals, resolved discussions, real provider CI and mergeability |
 | Webhooks | GitHub HMAC-SHA256 validation; GitLab secret token validation; persistent per-project delivery deduplication |
@@ -66,7 +66,7 @@ Organization roles are inherited by all projects. A project role can raise acces
 ## Finding work and reviewing runs
 
 - **Issues:** Search by title, description, or ID. Combine status, assignee (including Assigned to me and Unassigned), label, and milestone filters. Sort newest first, oldest first, or by title. Filter selections stay separate for each project while the page remains open. **Clear filters** restores all statuses and clears search and other filters.
-- **Milestones:** Select **View issues** to see both open and closed issues for that milestone.
+- **Milestones:** Switch between **All**, **Open**, and **Closed** to focus on active releases or completed milestones. Counts reflect the current project and update with live events. Select **View issues** to see both open and closed issues for that milestone.
 - **Notifications:** Switch between **All** and **Unread**, with counts that update as notifications arrive or are marked read. **Mark all read** appears while unread notifications remain.
 - **CI / Pipelines:** Filter runs by All, Queued, Running, Passed, or Failed. Each filter shows its current count and updates with live events. Open a run to inspect its logs, then use **Copy logs** or **Download logs** to save the current output as a plain-text `.log` file. Copying requires browser clipboard access; when unavailable, select and copy the log text manually. Empty logs show a message instead of copying or downloading an empty file. Logs copied or downloaded during a running simulation contain only the output available at that moment.
 
