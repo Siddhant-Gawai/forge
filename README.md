@@ -65,7 +65,7 @@ Organization roles are inherited by all projects. A project role can raise acces
 
 ## Finding work and reviewing runs
 
-- **Keyboard search:** On Issues or Merge requests, press **/** to focus search and select the current query. The shortcut stays inactive while typing in a field, using a selection control, or working in an open dialog.
+- **Keyboard search:** On Issues or Merge requests, press **/** to focus search and select the current query. The slash shortcut stays inactive while typing in a field, using a selection control, or working in an open dialog. Press **Escape** in a nonempty search field to clear the query while keeping focus and the selected filters. Escape does not clear search while a dialog is open.
 - **Issues:** Search by title, description, or ID. Combine status, assignee (including Assigned to me and Unassigned), label, and milestone filters. Sort newest first, oldest first, or by title. Filter selections stay separate for each project while the page remains open. **Clear filters** restores all statuses and clears search and other filters.
 - **Milestones:** Switch between **All**, **Open**, and **Closed** to focus on active releases or completed milestones. Counts reflect the current project and update with live events. Select **View issues** to see both open and closed issues for that milestone.
 - **Notifications:** Switch between **All** and **Unread**, with counts that update as notifications arrive or are marked read. **Mark all read** appears while unread notifications remain.

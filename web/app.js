@@ -107,7 +107,11 @@ document.addEventListener('change',e=>{if(e.target.name==='mr_id'&&e.target.valu
 document.addEventListener('change',e=>{const key=e.target.dataset?.issueFilter;if(['assignee','label','milestone','sort'].includes(key)){issuePreferences()[key]=e.target.value;render()}});
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('.clickable')){e.preventDefault();e.target.click()}});
 document.addEventListener('keydown',e=>{
- if(e.key!=='/'||e.defaultPrevented||e.isComposing||e.ctrlKey||e.metaKey||e.altKey||e.shiftKey)return;
+ if(e.defaultPrevented||e.isComposing||e.ctrlKey||e.metaKey||e.altKey||e.shiftKey)return;
+ if(e.key==='Escape'&&e.target.id==='search'&&e.target.value&&!document.querySelector('dialog[open]')){
+  e.preventDefault();search='';render();$('#search')?.focus();return;
+ }
+ if(e.key!=='/')return;
  if(e.target.closest('input,textarea,select,[role="textbox"],[role="combobox"],[role="listbox"]')||e.target.isContentEditable||document.querySelector('dialog[open]'))return;
  const input=$('#search');
  if(!input||input.disabled||!input.getClientRects().length)return;
