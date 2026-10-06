@@ -65,6 +65,7 @@ Organization roles are inherited by all projects. A project role can raise acces
 
 ## Finding work and reviewing runs
 
+- **Accessible list filters:** Issue and merge request status buttons announce their selected state to screen readers and retain keyboard focus after selection. Search fields and filter groups have labels specific to their list.
 - **Merge request search:** Search titles, descriptions, source or target branches, Forge IDs, and linked provider request numbers. Search ignores capitalization and leading/trailing spaces, and combines with the selected Open/Merged/Closed/All status. A result count shows matching requests out of the project's total and updates as search, status, or live data changes. Empty lists distinguish a project with no requests from filters with no matches.
 - **Clear search:** On Issues or Merge requests, a **Clear search** button appears when a query is entered. It clears only the query, keeps the selected filters and sort order, and returns focus to search.
 - **Keyboard search:** On Issues or Merge requests, press **/** to focus search and select the current query. The slash shortcut stays inactive while typing in a field, using a selection control, or working in an open dialog. Press **Escape** in a nonempty search field to clear the query while keeping focus and the selected filters. Escape does not clear search while a dialog is open.
