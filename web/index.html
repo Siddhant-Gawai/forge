@@ -11,7 +11,8 @@
   <form id="login-form">
    <label id="name-label" hidden>Full name<input name="name" autocomplete="name" maxlength="100" disabled></label>
    <label>Email address<input name="email" type="email" autocomplete="username" placeholder="you@company.com" required maxlength="254"></label>
-   <label>Password<input name="password" type="password" autocomplete="current-password" required maxlength="72"><small id="password-hint" hidden>Use at least 12 characters.</small></label>
+   <label>Password<input id="auth-password" name="password" type="password" autocomplete="current-password" required maxlength="72"><small id="password-hint" hidden>Use at least 12 characters.</small></label>
+   <button type="button" class="text-button" id="password-toggle" aria-controls="auth-password" aria-pressed="false">Show password</button>
    <div id="auth-error" role="alert"></div>
    <button class="primary" type="submit" id="auth-submit">Log in →</button>
   </form>
