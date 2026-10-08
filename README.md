@@ -66,6 +66,7 @@ Organization roles are inherited by all projects. A project role can raise acces
 ## Finding work and reviewing runs
 
 - **Password visibility:** Login and signup offer **Show password / Hide password** to check your entry. Passwords start hidden and return to hidden when switching between login and signup or resetting the form. The toggle announces its state to screen readers.
+- **Caps Lock warning:** When the browser reports Caps Lock during password keyboard input, login and signup display a screen-reader-friendly warning. It disappears when Caps Lock is turned off, the password field loses focus, or the form resets.
 - **Accessible list filters:** Issue and merge request status buttons announce their selected state to screen readers and retain keyboard focus after selection. Search fields and filter groups have labels specific to their list.
 - **Merge request search:** Search titles, descriptions, source or target branches, Forge IDs, and linked provider request numbers. Search ignores capitalization and leading/trailing spaces, and combines with the selected Open/Merged/Closed/All status. A result count shows matching requests out of the project's total and updates as search, status, or live data changes. Empty lists distinguish a project with no requests from filters with no matches.
 - **Clear search:** On Issues or Merge requests, a **Clear search** button appears when a query is entered. It clears only the query, keeps the selected filters and sort order, and returns focus to search.
