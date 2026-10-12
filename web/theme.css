@@ -113,3 +113,11 @@ dialog { background: var(--surface-2); border-color: var(--border-dark); color: 
 .select-panel-footer { border-color: var(--border-dark); }
 .select-done { background: var(--lime); color: #111f00; }
 @media(max-width:720px){.topbar{background:var(--canvas)}.sidebar{border-bottom:1px solid var(--border-dark)} }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .dashboard-project:hover { transform: none; }
+}
