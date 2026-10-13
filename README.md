@@ -65,6 +65,7 @@ Organization roles are inherited by all projects. A project role can raise acces
 
 ## Finding work and reviewing runs
 
+- **Skip navigation:** After signing in, the first Tab stop reveals **Skip to content**. Activate it to move keyboard focus directly to the main content and bypass the sidebar and header.
 - **Reduced motion:** Forge follows your system or browser's reduced-motion preference by disabling animations, transitions, smooth scrolling, and the project card's hover movement.
 - **Exact timestamps:** Hover over relative dates in issue rows or notifications to see the full date and time in your browser's local timezone. Screen readers receive the full timestamp, and missing or invalid dates display **No date**.
 - **Password visibility:** Login and signup offer **Show password / Hide password** to check your entry. Passwords start hidden and return to hidden when switching between login and signup or resetting the form. The toggle announces its state to screen readers.

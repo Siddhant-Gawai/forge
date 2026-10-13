@@ -133,6 +133,7 @@ document.addEventListener('keydown',e=>{
 });
 document.addEventListener('click',async e=>{const nav=e.target.closest('[data-view]');if(nav){view=nav.dataset.view;selected='';filter='open';search='';render();return}const tab=e.target.closest('[data-filter]');if(tab){filter=tab.dataset.filter;render();document.querySelector(`[data-filter="${filter}"]`)?.focus();return}const b=e.target.closest('[data-action]');if(!b)return;const {action,id,provider}=b.dataset;try{switch(action){
 case 'close-modal':$('#modal').close();return;
+case 'skip-content':e.preventDefault();$('#content').setAttribute('tabindex','-1');$('#content').focus();$('#content').scrollIntoView({block:'start'});return;
 case 'clear-issue-filters':issueFilters.delete(currentProject);filter='all';search='';render();return;
 case 'clear-search':search='';render();$('#search')?.focus();return;
 case 'milestone-issues':issueFilters.set(currentProject,{assignee:'',label:'',milestone:id,sort:'newest'});view='issues';filter='all';search='';selected='';render();return;
