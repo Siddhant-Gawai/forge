@@ -65,6 +65,7 @@ Organization roles are inherited by all projects. A project role can raise acces
 
 ## Finding work and reviewing runs
 
+- **Keyboard row focus:** Issue, merge request, and pipeline rows show a visible focus outline when reached with Tab. Activate a focused row with Enter or Space. The outline also uses the system highlight color in high-contrast mode.
 - **Skip navigation:** After signing in, the first Tab stop reveals **Skip to content**. Activate it to move keyboard focus directly to the main content and bypass the sidebar and header.
 - **Reduced motion:** Forge follows your system or browser's reduced-motion preference by disabling animations, transitions, smooth scrolling, and the project card's hover movement.
 - **Exact timestamps:** Hover over relative dates in issue rows or notifications to see the full date and time in your browser's local timezone. Screen readers receive the full timestamp, and missing or invalid dates display **No date**.

@@ -123,3 +123,11 @@ dialog { background: var(--surface-2); border-color: var(--border-dark); color: 
 }
 .skip-link{position:fixed;top:12px;left:12px;z-index:10000;padding:12px 18px;background:var(--lime,#c4ff47);color:#111f00;border-radius:6px;transform:translateY(-200%);font-weight:600}
 .skip-link:focus{transform:none;outline:3px solid currentColor;outline-offset:3px}
+.row.clickable:focus-visible {
+  outline: 2px solid var(--lime, #c4ff47);
+  outline-offset: -3px;
+  background: var(--surface-2);
+}
+@media (forced-colors: active) {
+  .row.clickable:focus-visible { outline-color: Highlight; }
+}
