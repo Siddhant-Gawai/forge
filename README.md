@@ -65,6 +65,7 @@ Organization roles are inherited by all projects. A project role can raise acces
 
 ## Finding work and reviewing runs
 
+- **Long titles and branches:** Work item titles, labels, and row metadata wrap to fit narrow screens, including long branch names and text without spaces.
 - **Keyboard row focus:** Issue, merge request, and pipeline rows show a visible focus outline when reached with Tab. Activate a focused row with Enter or Space. The outline also uses the system highlight color in high-contrast mode.
 - **Skip navigation:** After signing in, the first Tab stop reveals **Skip to content**. Activate it to move keyboard focus directly to the main content and bypass the sidebar and header.
 - **Reduced motion:** Forge follows your system or browser's reduced-motion preference by disabling animations, transitions, smooth scrolling, and the project card's hover movement.

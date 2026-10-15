@@ -131,3 +131,7 @@ dialog { background: var(--surface-2); border-color: var(--border-dark); color: 
 @media (forced-colors: active) {
   .row.clickable:focus-visible { outline-color: Highlight; }
 }
+.row-title { overflow-wrap: anywhere; }
+.row-meta { flex-wrap: wrap; }
+.row-meta > * { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.row-meta .tag { white-space: normal; }
