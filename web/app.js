@@ -144,7 +144,12 @@ case 'logout':await api('logout',{});stream?.close();await init();return;
 case 'issue':issueModal();return;
 case 'issue-detail':issueModal(id);return;
 case 'mr-detail':view='mrs';selected=id;render();return;
-case 'pipeline-detail':if(view!=='pipelines')pipelineFilter='all';view='pipelines';selected=selected===id?'':id;render();return;
+case 'pipeline-detail':{
+ if(view!=='pipelines')pipelineFilter='all';
+ view='pipelines';selected=selected===id?'':id;render();
+ const row=[...document.querySelectorAll('[data-action="pipeline-detail"]')].find(row=>row.dataset.id===id);
+ row?.focus({preventScroll:true});return;
+}
 case 'pipeline-filter':if(!['all','queued','running','passed','failed'].includes(id))return;pipelineFilter=id;selected='';render();return;
 case 'copy-pipeline-logs':{
  const run=list('pipelines').find(p=>p.id===id);
