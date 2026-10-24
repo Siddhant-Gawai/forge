@@ -137,7 +137,7 @@ case 'skip-content':e.preventDefault();$('#content').setAttribute('tabindex','-1
 case 'clear-issue-filters':issueFilters.delete(currentProject);filter='all';search='';render();return;
 case 'clear-search':search='';render();$('#search')?.focus();return;
 case 'milestone-issues':issueFilters.set(currentProject,{assignee:'',label:'',milestone:id,sort:'newest'});view='issues';filter='all';search='';selected='';render();return;
-case 'milestone-filter':if(!['all','open','closed'].includes(id))return;milestoneFilter=id;render();return;
+case 'milestone-filter':if(!['all','open','closed'].includes(id))return;milestoneFilter=id;render();document.querySelector(`[data-action="milestone-filter"][data-id="${id}"]`)?.focus({preventScroll:true});return;
 case 'open-project':currentProject=id;currentOrg=project()?.org_id||currentOrg;localStorage.setItem('forge.project',id);view='overview';selected='';render();return;
 case 'dashboard-issue':currentProject=data.issues.find(i=>i.id===id).project_id;currentOrg=project().org_id;issueModal(id);return;
 case 'logout':await api('logout',{});stream?.close();await init();return;
@@ -150,7 +150,7 @@ case 'pipeline-detail':{
  const row=[...document.querySelectorAll('[data-action="pipeline-detail"]')].find(row=>row.dataset.id===id);
  row?.focus({preventScroll:true});return;
 }
-case 'pipeline-filter':if(!['all','queued','running','passed','failed'].includes(id))return;pipelineFilter=id;selected='';render();return;
+case 'pipeline-filter':if(!['all','queued','running','passed','failed'].includes(id))return;pipelineFilter=id;selected='';render();document.querySelector(`[data-action="pipeline-filter"][data-id="${id}"]`)?.focus({preventScroll:true});return;
 case 'copy-pipeline-logs':{
  const run=list('pipelines').find(p=>p.id===id);
  if(!run)throw Error('This pipeline is no longer available.');
@@ -171,7 +171,7 @@ case 'download-pipeline-logs':{
 }
 case 'back':selected='';render();return;
 case 'inbox':view='inbox';render();return;
-case 'notification-filter':unreadOnly=id==='unread';render();return;
+case 'notification-filter':if(!['all','unread'].includes(id))return;unreadOnly=id==='unread';render();document.querySelector(`[data-action="notification-filter"][data-id="${id}"]`)?.focus({preventScroll:true});return;
 case 'organization':modal('New organization',field('Organization name','name'),'Create organization',async f=>{const o=await command({kind:'organization.create',...f});currentOrg=o.id;currentProject=''});return;
 case 'project':modal('New project',field('Project name','name')+`<label>Description<textarea name="description"></textarea></label><label>Organization<select name="org_id">${data.organizations.map(o=>`<option value="${o.id}" ${o.id===currentOrg?'selected':''}>${esc(o.name)}</option>`).join('')}</select></label>`,'Create project',async f=>{const p=await command({kind:'project.create',...f});currentProject=p.id;currentOrg=p.org_id;view='overview'});return;
 case 'team':teamModal();return;
