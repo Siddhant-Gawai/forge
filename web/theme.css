@@ -135,3 +135,5 @@ dialog { background: var(--surface-2); border-color: var(--border-dark); color: 
 .row-meta { flex-wrap: wrap; }
 .row-meta > * { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .row-meta .tag { white-space: normal; }
+.log:focus-visible { outline: 2px solid var(--lime, #c4ff47); outline-offset: -3px; }
+@media (forced-colors: active) { .log:focus-visible { outline-color: Highlight; } }
