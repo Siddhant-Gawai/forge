@@ -65,6 +65,7 @@ Organization roles are inherited by all projects. A project role can raise acces
 
 ## Finding work and reviewing runs
 
+- **Browser tab titles:** Tabs show the current page and project, making multiple Forge tabs easier to distinguish. Dashboard and notification titles omit project context; login and signup have their own titles.
 - **Keyboard log access:** After expanding a pipeline, Tab past Copy/Download to focus its log region. The focused log has a visible outline, supports browser keyboard scrolling when it overflows, and is named with its pipeline ID and branch for screen readers.
 - **Pipeline log disclosure:** Pipeline rows have descriptive accessible labels identifying the run, branch, and status. On the Pipelines page, rows announce whether their logs are expanded or collapsed and show a downward indicator while open. Opening or closing logs keeps keyboard focus on the selected row, so you can toggle it again or Tab to its log actions.
 - **Named dialogs:** Creation, editing, and review dialogs expose their current heading as the accessible dialog name so screen readers can identify the task when the dialog opens.
