@@ -65,6 +65,7 @@ Organization roles are inherited by all projects. A project role can raise acces
 
 ## Finding work and reviewing runs
 
+- **Avatar names:** User avatars expose the person's full display name to screen readers and show it on hover, making initials easier to identify in issue lists and other shared views.
 - **Empty pipeline logs:** Expanded runs with no output show a waiting message while queued or running, or **No log output was recorded** after completion. These messages are display hints and are not included in copied or downloaded logs.
 - **Browser tab titles:** Tabs show the current page and project, making multiple Forge tabs easier to distinguish. Dashboard and notification titles omit project context; login and signup have their own titles.
 - **Keyboard log access:** After expanding a pipeline, Tab past Copy/Download to focus its log region. The focused log has a visible outline, supports browser keyboard scrolling when it overflows, and is named with its pipeline ID and branch for screen readers.

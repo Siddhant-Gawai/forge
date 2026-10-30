@@ -1,7 +1,7 @@
 'use strict';
 const $=s=>document.querySelector(s), esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let data, me, currentProject=localStorage.getItem('forge.project')||'', currentOrg='', view='dashboard', filter='open', search='', selected='', stream, modalHandler, repoPage=1, authMode='login';
-const user=id=>data?.users.find(u=>u.id===id), userName=id=>user(id)?.name||id, initials=id=>userName(id).split(' ').map(n=>n[0]).join('').slice(0,2), avatar=id=>`<span class="avatar">${esc(initials(id))}</span>`;
+const user=id=>data?.users.find(u=>u.id===id), userName=id=>user(id)?.name||id, initials=id=>userName(id).split(' ').map(n=>n[0]).join('').slice(0,2), avatar=id=>`<span class="avatar" role="img" aria-label="${esc(userName(id))}" title="${esc(userName(id))}">${esc(initials(id))}</span>`;
 const project=()=>data?.projects.find(p=>p.id===currentProject), org=()=>data?.organizations.find(o=>o.id===(project()?.org_id||currentOrg));
 const list=key=>(data?.[key]||[]).filter(v=>v.project_id===currentProject), badge=s=>`<span class="badge ${esc(s)}">${s==='passed'?'✓ ':s==='running'?'◌ ':''}${esc(s)}</span>`, short=id=>String(id).length<8?id:String(id).slice(0,6);
 const date=s=>s?new Date(s).toLocaleDateString(undefined,{month:'short',day:'numeric'}):'No date', age=s=>{const n=Math.max(0,Math.floor((Date.now()-new Date(s))/60000));return n<1?'just now':n<60?`${n}m ago`:n<1440?`${Math.floor(n/60)}h ago`:date(s)};
