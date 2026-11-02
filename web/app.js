@@ -165,7 +165,8 @@ case 'download-pipeline-logs':{
  if(!run.logs?.length){toast('No logs to download yet.');return}
  const url=URL.createObjectURL(new Blob([run.logs.join('\n')+'\n'],{type:'text/plain;charset=utf-8'}));
  const link=document.createElement('a');
- link.href=url;link.download=`forge-pipeline-${String(run.id).replace(/[^a-zA-Z0-9_-]/g,'_')}.log`;
+ const filePart=value=>String(value||'unknown').replace(/[^a-zA-Z0-9_-]/g,'_').slice(0,80);
+ link.href=url;link.download=`forge-pipeline-${filePart(run.id)}-${filePart(run.ref)}.log`;
  try{document.body.appendChild(link);link.click();toast('Log download started.')}finally{link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
  return;
 }

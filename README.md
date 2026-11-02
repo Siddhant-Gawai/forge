@@ -65,6 +65,7 @@ Organization roles are inherited by all projects. A project role can raise acces
 
 ## Finding work and reviewing runs
 
+- **Log filenames:** Downloaded pipeline logs include the run ID and branch, for example `forge-pipeline-123-feature_login.log`. Filename components replace punctuation with underscores and are limited to 80 characters each.
 - **Avatar names:** User avatars expose the person's full display name to screen readers and show it on hover, making initials easier to identify in issue lists and other shared views.
 - **Empty pipeline logs:** Expanded runs with no output show a waiting message while queued or running, or **No log output was recorded** after completion. These messages are display hints and are not included in copied or downloaded logs.
 - **Browser tab titles:** Tabs show the current page and project, making multiple Forge tabs easier to distinguish. Dashboard and notification titles omit project context; login and signup have their own titles.
